@@ -11,7 +11,7 @@ Resources:
         api:
           Type: Api
           Properties:
-            Path: /{all+}
+            Path: /actix/{all+}
             Method: any
     Metadata:
       BuildMethod: makefile
