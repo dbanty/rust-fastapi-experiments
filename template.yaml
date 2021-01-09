@@ -1,0 +1,17 @@
+Resources:
+  RustApiActixFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: RustApiActix
+      Handler: rust_api
+      Runtime: provided
+      MemorySize: 512
+      CodeUri: .
+      Events:
+        api:
+          Type: Api
+          Properties:
+            Path: /{all+}
+            Method: any
+    Metadata:
+      BuildMethod: makefile
