@@ -1,7 +1,9 @@
 This repo contains experimental Rust code written as research for [a blog series](https://dylananthony.com/posts/fastapi-rust-1-intro) about attempting to replace my usages of FastAPI with a Rust alternative.
 
 ## To Set Up (macOS)
-1. Install AWS SAM (requires Docker): `brew tap aws/tap && brew install aws-sam-cli`
+1. Install AWS SAM CLI: `pipx install aws-sam-cli==1.12.0`
+2. Switch to the nightly toolchain: `rustup toolchain install nightly`
+3. Set nightly as the default toolchain: `rustup default nightly`
 2. Add MUSL target: `rustup target add x86_64-unknown-linux-musl`
 3. Install MUSL cross-compile tool: `brew install FiloSottile/musl-cross/musl-cross`
 4. Soft link musl-gcc: `ln -s /usr/local/bin/x86_64-linux-musl-gcc /usr/local/bin/musl-gcc`

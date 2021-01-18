@@ -15,3 +15,20 @@ Resources:
             Method: any
     Metadata:
       BuildMethod: makefile
+
+  RocketFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: Rocket
+      Handler: rocket-test
+      Runtime: provided
+      MemorySize: 512
+      CodeUri: .
+      Events:
+        api:
+          Type: Api
+          Properties:
+            Path: /rocket/{all+}
+            Method: any
+    Metadata:
+      BuildMethod: makefile
