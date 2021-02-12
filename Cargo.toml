@@ -1,5 +1,16 @@
-[workspace]
-members = [
-    "actix-web",
-    "rocket-test",
-]
+[package]
+name = "rocket-api"
+version = "0.1.0"
+authors = ["Dylan Anthony <contact@dylananthony.com>"]
+edition = "2018"
+
+[dependencies]
+rocket = { git = "https://github.com/SergioBenitez/Rocket" }
+rocket_lamb = { git = "https://github.com/dbanty/rocket-lamb", branch = "rocket-0.5" }
+serde = "1.0.119"
+rocket_contrib = { git = "https://github.com/SergioBenitez/Rocket" , features = ["json"] }
+serde_derive = "1.0.119"
+rocket_okapi = { git = "https://github.com/ThouCheese/okapi", branch = "async" }
+schemars = { version = "0.8.0-alpha-4" }
+okapi = { git = "https://github.com/ThouCheese/okapi", branch = "async" }
+tokio = "1.2.0"

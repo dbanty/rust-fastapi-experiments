@@ -1,26 +1,9 @@
 Resources:
-  RustApiActixFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      FunctionName: RustApiActix
-      Handler: rust_api
-      Runtime: provided
-      MemorySize: 512
-      CodeUri: .
-      Events:
-        api:
-          Type: Api
-          Properties:
-            Path: /actix/{all+}
-            Method: any
-    Metadata:
-      BuildMethod: makefile
-
   RocketFunction:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: Rocket
-      Handler: rocket-test
+      Handler: unused
       Runtime: provided
       MemorySize: 512
       CodeUri: .
@@ -28,7 +11,7 @@ Resources:
         api:
           Type: Api
           Properties:
-            Path: /rocket/{all+}
+            Path: /{all+}
             Method: any
     Metadata:
       BuildMethod: makefile

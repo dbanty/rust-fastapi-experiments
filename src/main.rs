@@ -1,5 +1,3 @@
-#![feature(proc_macro_hygiene, decl_macro)]
-
 #[macro_use]
 extern crate rocket;
 #[macro_use]
@@ -27,9 +25,9 @@ fn echo(pet: Json<Pet>) -> Json<Pet> {
 
 fn build_app() -> Rocket {
     rocket::ignite()
-        .mount("/rocket", routes_with_openapi![echo])
+        .mount("/", routes_with_openapi![echo])
         .mount(
-            "/rocket/docs/",
+            "/docs/",
             make_swagger_ui(&SwaggerUIConfig {
                 url: "../openapi.json".to_owned(),
                 ..Default::default()
@@ -37,8 +35,9 @@ fn build_app() -> Rocket {
         )
 }
 
-fn main() {
-    build_app().lambda().launch();
+#[tokio::main]
+async fn main() {
+    build_app().lambda().launch().await;
 }
 
 #[cfg(test)]
@@ -51,7 +50,7 @@ mod tests {
     fn echo() {
         let client = Client::new(build_app()).expect("Could not build app");
         let req = client
-            .post("/rocket/echo")
+            .post("/echo")
             .header(ContentType::JSON)
             .body(r#"{"name": "Bob"}"#);
         let mut resp = req.dispatch();
