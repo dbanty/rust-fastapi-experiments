@@ -1,3 +1,5 @@
+Transform: AWS::Serverless-2016-10-31
+
 Resources:
   RocketFunction:
     Type: AWS::Serverless::Function
