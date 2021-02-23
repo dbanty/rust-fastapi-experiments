@@ -11,7 +11,7 @@ export class Service extends core.Construct {
 
         const handler = new lambda.Function(this, "RocketFunction", {
             runtime: lambda.Runtime.PROVIDED_AL2,
-            code: lambda.Code.fromAsset("../bootstrap"),
+            code: lambda.Code.fromAsset("bootstrap"),
             handler: "unused",
             environment: {
                 BUCKET: bucket.bucketName
@@ -20,11 +20,10 @@ export class Service extends core.Construct {
 
         bucket.grantReadWrite(handler);
 
-        const api = new apigateway.LambdaRestApi(this, "RocketAPI", {
+        new apigateway.LambdaRestApi(this, "RocketAPI", {
             handler,
             restApiName: "Rocket API",
             description: "An OpenAPI serverless app made with Rust's Rocket framework.",
-
         });
     }
 }

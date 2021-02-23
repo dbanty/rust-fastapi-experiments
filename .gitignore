@@ -1,3 +1,11 @@
-.aws-sam/
+# JetBrains
 .idea/
+
+# Cargo
 /target
+
+# CDK
+node_modules/
+cdk.out/
+bootstrap/
+template.yaml
